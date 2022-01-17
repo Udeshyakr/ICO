@@ -70,7 +70,6 @@ contract ICO is ERC20, Ownable, ReentrancyGuard {
    
 
     function buy() public payable nonReentrant returns (bool sucess) {
-      require(msg.sender.balance >= msg.value && msg.value != 0 ether, "invalid");
       uint256 amount = calculateTokensToBuy(msg.value);
       require(amount > 0, "can't buy");
       _transfer(owner(), _msgSender(), amount);
